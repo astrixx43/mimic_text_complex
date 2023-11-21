@@ -1,9 +1,5 @@
-import random
-from typing import TextIO
 from random import choice
-from playsound import playsound
 import time
-import string
 
 T = [0.0]
 M = [0.0]
