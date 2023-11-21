@@ -37,9 +37,6 @@ def make_nthgram_dictionary(filename: str, nth: int) -> dict[str, list[str]]:
         key = key[1:]
         key.append(value)
 
-    # Ajanse shisheye
-    # Ghermez
-
     t2 = time.time()
     T[0] = (T[0] + t2 - t1)
     M[0] = (M[0] + t2 - t1)
@@ -618,53 +615,53 @@ def merge_dictionary(dict1: dict, dict2: dict) -> dict:
 
 
 def large():
-    m1 = merge_dictionary(make_dictionary("big.txt"),
-                          make_dictionary("big2.txt"))
-    m2 = merge_dictionary(m1, make_dictionary("big3.txt"))
-    m3 = merge_dictionary(m2, make_dictionary("big 4.txt"))
-    m4 = merge_dictionary(m3, make_dictionary("The holy book.txt"))
-    m5 = merge_dictionary(m4, make_dictionary("The holy book2.txt"))
-    m6 = merge_dictionary(m5, make_dictionary("The holy book3.txt"))
-    m7 = merge_dictionary(m6, make_dictionary("The holy book4.txt.txt"))
-    m8 = merge_dictionary(m7, make_dictionary("Hamlet.txt"))
-    m9 = merge_dictionary(m8, make_dictionary("big5.txt"))
-    m10 = merge_dictionary(m9, make_dictionary("big6.txt"))
-    m11 = merge_dictionary(m10, make_dictionary("big7.txt"))
-    m12 = merge_dictionary(m11, make_dictionary("big8.txt"))
+    m1 = merge_dictionary(make_dictionary("Main/big.txt"),
+                          make_dictionary("Main/big2.txt"))
+    m2 = merge_dictionary(m1, make_dictionary("Main/big3.txt"))
+    m3 = merge_dictionary(m2, make_dictionary("Main/big 4.txt"))
+    m4 = merge_dictionary(m3, make_dictionary("Main/The holy book.txt"))
+    m5 = merge_dictionary(m4, make_dictionary("Main/The holy book2.txt"))
+    m6 = merge_dictionary(m5, make_dictionary("Main/The holy book3.txt"))
+    m7 = merge_dictionary(m6, make_dictionary("Main/The holy book4.txt.txt"))
+    m8 = merge_dictionary(m7, make_dictionary("Main/Hamlet.txt"))
+    m9 = merge_dictionary(m8, make_dictionary("Main/big5.txt"))
+    m10 = merge_dictionary(m9, make_dictionary("Main/big6.txt"))
+    m11 = merge_dictionary(m10, make_dictionary("Main/big7.txt"))
+    m12 = merge_dictionary(m11, make_dictionary("Main/big8.txt"))
     print(M)
 
     return m12
 
 
 def large_nthgram(nth):
-    m1 = merge_dictionary(make_nthgram_dictionary("big.txt", nth),
-                          make_nthgram_dictionary("big2.txt", nth))
-    m2 = merge_dictionary(m1, make_nthgram_dictionary("big3.txt", nth))
-    m3 = merge_dictionary(m2, make_nthgram_dictionary("big 4.txt", nth))
-    m4 = merge_dictionary(m3, make_nthgram_dictionary("The holy book.txt", nth))
+    m1 = merge_dictionary(make_nthgram_dictionary("Main/big.txt", nth),
+                          make_nthgram_dictionary("Main/big2.txt", nth))
+    m2 = merge_dictionary(m1, make_nthgram_dictionary("Main/big3.txt", nth))
+    m3 = merge_dictionary(m2, make_nthgram_dictionary("Main/big 4.txt", nth))
+    m4 = merge_dictionary(m3, make_nthgram_dictionary("Main/The holy book.txt", nth))
     m5 = merge_dictionary(m4,
-                          make_nthgram_dictionary("The holy book2.txt", nth))
+                          make_nthgram_dictionary("Main/The holy book2.txt", nth))
     m6 = merge_dictionary(m5,
-                          make_nthgram_dictionary("The holy book3.txt", nth))
-    m7 = merge_dictionary(m6, make_nthgram_dictionary("The holy book4.txt.txt",
+                          make_nthgram_dictionary("Main/The holy book3.txt", nth))
+    m7 = merge_dictionary(m6, make_nthgram_dictionary("Main/The holy book4.txt.txt",
                                                       nth))
-    m8 = merge_dictionary(m7, make_nthgram_dictionary("Hamlet.txt", nth))
-    m9 = merge_dictionary(m8, make_nthgram_dictionary("big5.txt", nth))
-    m10 = merge_dictionary(m9, make_nthgram_dictionary("big6.txt", nth))
-    m11 = merge_dictionary(m10, make_nthgram_dictionary("big7.txt", nth))
-    m12 = merge_dictionary(m11, make_nthgram_dictionary("big8.txt", nth))
+    m8 = merge_dictionary(m7, make_nthgram_dictionary("Main/Hamlet.txt", nth))
+    m9 = merge_dictionary(m8, make_nthgram_dictionary("Main/big5.txt", nth))
+    m10 = merge_dictionary(m9, make_nthgram_dictionary("Main/big6.txt", nth))
+    m11 = merge_dictionary(m10, make_nthgram_dictionary("Main/big7.txt", nth))
+    m12 = merge_dictionary(m11, make_nthgram_dictionary("Main/big8.txt", nth))
     m13 = merge_dictionary(m12,
-                           make_nthgram_dictionary("All_Shakespeare.txt", nth))
+                           make_nthgram_dictionary("Main/All_Shakespeare.txt", nth))
 
     return m13
 
 
 def seuss(nth):
-    m1 = make_nthgram_dictionary("seuss1.txt", nth)
+    m1 = make_nthgram_dictionary("Main/seuss1.txt", nth)
 
     for i in range(2, 7):
         m1 = merge_dictionary(m1, make_nthgram_dictionary(
-            ("seuss" + str(i) + '.txt'), nth))
+            ("Main/seuss" + str(i) + '.txt'), nth))
 
     return m1
 
@@ -682,7 +679,7 @@ def grammar(marks, atricle, verb, prepostion, pronouns, conjection):
     Atricle = ["the", "some", "a", "an", "one"]
     for i in Atricle:
         atricle.append(i)
-    with open("en-verbs.txt", "r+") as file:
+    with open("Main/en-verbs.txt", "r+") as file:
         lines = file.readlines()
         for i in lines:
             word = i.strip()
@@ -697,19 +694,19 @@ def grammar(marks, atricle, verb, prepostion, pronouns, conjection):
                 elif len(j) > 0:
                     verb.append(j.lower())
 
-    with open("prepositions.txt", "r") as file:
+    with open("Main/prepositions.txt", "r") as file:
         p = file.readlines()
     for i in range(len(p)):
         prepostion.append(p[i].strip().lower())
 
-    with open("pronouns.txt", "r+") as file:
+    with open("Main/pronouns.txt", "r+") as file:
         lines = file.readlines()
         for i in lines:
             word = i.strip()
             word = word.replace("'", "")
             word = word.replace(',', "")
             pronouns.append(word.lower())
-    with open("conjection.txt", "r+") as file:
+    with open("Main/conjection.txt", "r+") as file:
         lines = file.readlines()
         for i in lines:
             word = i.strip().lower()
@@ -817,7 +814,7 @@ def sentence_structure(value, acc, num_words, counter, all_value, verb, i, prep,
 
 
 def shakespeare(nth):
-    return make_nthgram_dictionary("All_Shakespeare.txt", nth)
+    return make_nthgram_dictionary("Main/All_Shakespeare.txt", nth)
 
 
 def main():
@@ -963,7 +960,7 @@ def main():
 
 
 def stephen_king(nth):
-    return make_nthgram_dictionary("Stphen King.txt", nth)
+    return make_nthgram_dictionary("Main/Stphen King.txt", nth)
 
 
 main()
