@@ -5,8 +5,6 @@ from playsound import playsound
 import time
 import string
 
-# mirese Khabar
-
 T = [0.0]
 M = [0.0]
 Me = [0.0]
