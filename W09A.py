@@ -94,18 +94,6 @@ def mimic_text_nthgram(word_dict: dict[tuple[str], list[str]], nth: int,
 
         # p = p and (counter != 0 or value[0].istitle())
 
-        # if a < ((nth // 2) - 1) and i > 3:
-        # print("acc:" + str(acc))
-        # print("a:" + str(a))
-        # print("Value:" + str(value))
-        # print("Key:" + str(key))
-
-        # i = 0
-        # acc = ""
-        # key = choice(all_keys)
-        # value = list(key)
-
-        a = nth
         # p = p and (
         #     sentence_structure(value[0], acc, num_words, counter, all_value,
         #                        Verb, i, Prepostion, Atricle, prev_word,
@@ -300,10 +288,6 @@ def mimic_text_from_phrase(word_dict: dict[str, list[str]], nth: int,
     """
        Based on the word patterns in <word_dict>, return a string with
        <num_words> words that mimics the text.
-       """
-    """
-    Based on the word patterns in <word_dict>, return a string with
-    <num_words> words that mimics the text.
     """
     t1 = time.time()
     # TODO
@@ -744,55 +728,42 @@ def sentence_structure(value, acc, num_words, counter, all_value, verb, i, prep,
     marks = ["!", "?", "."]
     if len(prev_word) < 1 or len(value) < 1:
         return True
-    to_begin = not (len(acc) == 1 or prev_word[-1] in marks)
-    to_begin = to_begin or value.istitle()
-    to_begin = True
 
     capital = not (value.istitle()) or len(acc) == 1 or prev_word[-1] in marks
     capital = capital
-    capital = True
 
     not_end_prepo = value[-1] not in marks or counter != 4
-    not_end_prepo = True  ##
 
     ending = (i < (num_words - 1)) or (value[-1] in marks)
 
     not_double_verb = value not in verb
     not_double_verb = not_double_verb or counter != 3
-    not_double_verb = True
-
+  
     use_of_art = counter != 1 or value.lower() not in prep
     use_of_art = use_of_art or value.lower() not in verb
-    use_of_art = True
 
     use_of_prep = value.lower() not in prep
     use_of_prep = use_of_prep or counter == 2
-    use_of_prep = True
 
     after_prep = counter != 4 or value.lower() not in verb or value.lower() == "she"
     after_prep = after_prep or value.lower() == "he" or value.lower() == "they"
-    after_prep = True
 
     use_of_pronouns = counter != 5 or (prev_word == "she" or prev_word == "his")
     use_of_pronouns = use_of_pronouns or prev_word == "them" or value in verb
     use_of_pronouns = use_of_pronouns or i >= num_words - 2
-    use_of_pronouns = True
 
     dont_end_with = i != num_words - 1 or value not in pronouns
     after_verb = counter != 3 or value.lower() in pronouns
     after_verb = after_verb or value.lower() in prep or value.lower() in atricle
-    after_verb = True
 
     pronouns_verbs = prev_word == "she" or prev_word == "his"
     pronouns_verbs = not (pronouns_verbs or prev_word == "them")
     pronouns_verbs = pronouns_verbs or not (value in verb)
-    pronouns_verbs = True
 
     dont_repeat = value != prev_word
 
     dont_conjuct = counter != 1 or value not in conjuntion
     dont_conjuct = dont_conjuct or counter != 6
-    dont_conjuct = True
     pronouns_article = counter != 1 or value not in pronouns
 
     state = ending and to_begin and capital and not_end_prepo
